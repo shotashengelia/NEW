@@ -1,0 +1,60 @@
+﻿@model Metra_Development.DailyNew
+
+@{
+    ViewBag.Title = "EditNews";
+    Layout = "~/Views/Shared/AdminPanelLayout.cshtml";
+    string link = "/Content/Images/" + Model.Photo + ".png";
+}
+
+<h2>რედაქტირება</h2>
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link href="~/Content/NewsStyle.css" rel="stylesheet" />
+<form class="w3-container" action="/AdminPanel/EditNews/@Model.ID " method="post" enctype="multipart/form-data">
+    <div class="w3-card-4">
+        <div class="w3-container w3-brown">
+            <h2>სიახლის დამატება</h2>
+        </div>
+        <p>
+            <label class="w3-green"><b>სურათის ატვირთვა</b></label>
+            <img src="@link" width="240"/>
+            <input type="file" name="File" id="File" accept="image/gif, image/jpeg, image/png" value="@link" onchange="readURL(this);" />
+            <img id="uploadImg" src="" />
+        <p>
+            <label class="w3-text-brown"><b>სათაური</b></label>
+            <input class="w3-input w3-border w3-sand" name="Title" value="@Model.Title" type="text">
+        </p>
+        <p>
+            <label class="w3-text-brown"><b>სიახლე</b></label>
+            <textarea rows="20" name="Text">@Model.Text</textarea>
+        <p>
+            <button class="w3-btn w3-green" type="submit">სიახლის დამატება</button>
+        </p>
+    </div>
+   
+    <a style="margin-top:35px;" href="/News/AdminShowNews"><i class="glyphicon glyphicon-arrow-left" style="color:green; margin-top:24px; font-size:42px;"></i></a>
+    <div class="form-group error" style="font-size: 18px; color: red;">
+        @ViewBag.Error
+    </div>
+</form>
+
+<script src="~/Content/metra/HTML/vendor/jquery.min.js"></script>
+<script>
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#uploadImg')
+                    .attr('src', e.target.result)
+                    .width(400);
+
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+
+

@@ -1,0 +1,13 @@
+﻿@model  Metra_Development.DailyNew
+
+@{
+    ViewBag.Title = "DetailNews";
+    Layout = "~/Views/Shared/AdminPanelLayout.cshtml";
+    string link = "/Content/Images/" + Model.Photo + ".png";
+}
+<h2>@Model.Title</h2>
+<img src="@link"  title="@Model.Title"/>
+<p style="margin-top:20px;">@Model.Text</p>
+
+<a style="margin-top:35px;" href="/News/AdminShowNews"><i class="glyphicon glyphicon-arrow-left" style="color:green; margin-top:24px; font-size:42px;"></i></a>
+

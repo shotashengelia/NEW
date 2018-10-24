@@ -1,0 +1,68 @@
+﻿@model  IEnumerable<Metra_Development.DailyNew>
+@{
+    ViewBag.title = "AdminShowNews";
+    Layout = "~/views/Shared/AdminPanelLayout.cshtml";
+}
+
+<table class="table table-bordered table-hover" style="margin-top:20px">
+    <tr>
+        <th>ფოტო</th>
+        <th>სათაური</th>
+        <th>ტექსტი</th>
+        <th>თარიღი</th>
+        <th>გამოქვეყნებულია</th>
+        <th></th>
+    </tr>
+    @foreach (var item in @Model)
+    {
+        string link = @item.Photo + ".png";
+        <tr class="Clickable" data-href="/AdminPanel/ReviewNews/@item.ID">
+            <td><img src="~/Content/Images/@link" width="200"/></td>
+            <td>@if (item.Title.Length<30)
+            {
+                @item.Title
+            }
+            else
+            {
+                    @item.Title.Substring(0,20)
+                    <text>..</text>
+            }
+            </td>
+            <td>@if (item.Text.Length<35)
+            {
+                @item.Text
+            }
+            else
+            {
+                @item.Text.Substring(0,35)
+                <text>..</text>
+            }
+            </td>
+            <td>@item.CreateDate</td>
+            <td>
+            @if (item.IsPublished)
+            {
+                <i class="glyphicon glyphicon-eye-open" style="color:green; font-size:32px;"></i>
+            }
+            else  
+            {
+                <i class="glyphicon glyphicon-eye-close" style="color:red; font-size:32px;"></i>
+            }
+            
+
+            </td>
+            <td><a class="btn btn-warning" href="/AdminPanel/EditNews/@item.ID">რედაქტირება</a>
+                <div style="width:88.188px;"><a style="margin-top:4px;" class="btn btn-info" href="/AdminPanel/DetailNews/@item.ID">ნახვა</a></div>
+                <div style="width:88.188px;"><a style="margin-top:4px;" class="btn btn-danger" href="/AdminPanel/DeleteNews/@item.ID">წაშლა</a></div>
+            </td>
+        </tr>
+    }
+</table>
+
+<script>
+    $(document).ready(function () {
+        $('.Clickable').click(function () {
+            window.location.href = $(this).data('href');
+        });
+    });
+</script>

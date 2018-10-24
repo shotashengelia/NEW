@@ -1,0 +1,40 @@
+﻿@model Metra_Development.Models.HouseCustom
+
+@{
+    ViewBag.Title = "AddStorey";
+    Layout = "~/Views/Shared/AdminPanelLayout.cshtml";
+}
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link href="~/Content/NewsStyle.css" rel="stylesheet" />
+
+<form class="w3-container" action="/Projects/AddStorey" method="post" enctype="multipart/form-data">
+    <div style="margin-top:50px;">
+        <div class="w3-card-4">
+            <div class="w3-container w3-brown">
+                <h2 class="text-center">სართულის დამატება</h2>
+            </div>
+            <p>
+                <label class="w3-text-brown" style="margin-left:7px;"><b>კორპუსი</b></label>
+                @Html.DropDownList("HouseID", new SelectList(ViewBag.getHouselist, "ID", "HouseIDANDProjectName"), new { @class = "form-control" })
+            </p>
+
+            <p>
+                <label class="w3-text-brown" style="margin-left:7px;"><b>სართული</b></label>
+                <input type="number" class="form-control w3-input w3-border w3-sand" name="Floor1" placeholder="სართულის ნომერი" />
+            </p>
+            <div class="form-group">
+                <p>
+                    <button class="w3-btn w3-green" type="submit">სართულის დამატება</button>
+                </p>
+            </div>
+        </div>
+        </div>
+            <a style="margin-top:45px;" href="/Projects/Index"><i class="glyphicon glyphicon-arrow-left" style="color:green; margin-top:24px; font-size:42px;"></i></a>
+            <div class="form-group" style="font-size: 18px; color: red;">
+                @ViewBag.Error
+            </div>
+        
+        
+</form>
+

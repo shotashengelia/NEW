@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+<style>
+    /* Always set the map height explicitly to define the size of the div
+      * element that contains the map. */
+    #map {
+        height: 400px;
+        width: 1000px;
+    }
+    .row {
+        margin-left: 320px;
+        margin-top: 60px;
+        margin-bottom: 120px;
+    }
+    .contact {
+        margin-top: 60px;
+        margin-bottom: 120px;
+        
+    }
+</style>
+<div class="container">
+    <div class="contact col-md-3">
+        <h2>კონტაქტი</h2>
+        <div class="cl">
+            <strong>ოფისი:</strong>
+            <div>
+                ზურაბ საკანდელიძის ქუჩა 6                        თბილისი, საქართველო
+            </div><br><br><br><br>
+            <strong>ადმინისტრაცია:</strong>
+            <div>
+                +995 32 260 44 45
+            </div><br><br><br><br>
+            <strong>გაყიდვები:</strong>
+            <div>
+                +995 32 223 75 75                        <a href="mailto:sales@metra.ge">sales@metra.ge</a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div id="map" class="col-md-9"></div>
+        <script>
+            var map;
+            function initMap() {
+                map = new google.maps.Map(document.getElementById('map'), {
+                    center: { lat: 41.716729, lng: 44.784198 },
+                    zoom: 17
+                });
+                var marker = new google.maps.Marker({
+                    position: { lat: 41.716729, lng: 44.784198 },
+                    map: map
+                });
+            }
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYc1OSyTOIcSb7XUKqpDmwy64j0LmxrSo&callback=initMap"
+                async defer></script>
+    </div>
+</div>

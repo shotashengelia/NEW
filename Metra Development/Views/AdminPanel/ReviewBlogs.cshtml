@@ -1,0 +1,21 @@
+﻿@model Metra_Development.Blog
+
+@{
+    ViewBag.Title = "ReviewBlogs";
+    Layout = "~/Views/Shared/AdminPanelLayout.cshtml";
+    string link = "/Content/Images/" + Model.Photo + ".png";
+}
+
+<h2>@Model.Title</h2>
+<img src="@link" title="@Model.Title" />
+<p style="margin-top:20px;">@Html.Raw(@Model.Text)</p>
+
+<a style="margin-top:35px;" href="/AdminPanel/AdminShowBlogs"><i class="glyphicon glyphicon-arrow-left" style="color:green; margin-top:24px; font-size:42px;"></i></a>
+
+<a href="/AdminPanel/PublishBlogs/@Model.ID"><i class="glyphicon glyphicon-check" style="color:blue; font-size:42px; margin-top:30px; padding-top:10px; float:right;">Publish</i></a>
+
+<div style="margin-top:17px;">
+    <a href="/AdminPanel/UnPublishBlogs/@Model.ID"><i class="glyphicon glyphicon-unchecked" style="color:blue; font-size:42px; margin-top:20px; padding-top:10px; float:right;">UnPublish</i></a>
+</div>
+
+

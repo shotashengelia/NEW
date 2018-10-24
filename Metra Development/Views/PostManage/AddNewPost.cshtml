@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Metra_Development.Models.PostManageModel>
+@{
+    ViewBag.Title = "AddNewPost";
+    Layout = "~/Views/Shared/AdminPanelLayout.cshtml";
+
+}
+<script src="~/Content/metra/HTML/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="~/Scripts/ckeditor/ckeditor.js"></script>
+<script src="~/Scripts/ckeditor/adapters/jquery.js"></script>
+
+
+   <h3>ბლოგის დამატება</h3>
+<form action="/PostManage/AddNewPost" method="post" enctype="multipart/form-data">
+
+    @*@Html.DropDownList("Category", ViewBag.categorylist as SelectList, "აირჩიეთ კატეგორია")*@
+    <div class="form-group">
+        @Html.DropDownList("CategoryID", new SelectList(ViewBag.getcategorylist, "ID", "Name"), new { @class = "form-control" })
+        
+    </div>
+    
+        <div class="form-group">
+        <input type="text" class="form-control" name="Title" placeholder="სათაური" />
+    </div>
+    <div class="form-group">
+        <textarea class="ckeditor" name="Text"></textarea>
+    </div>
+    <div class="form-group">
+        <input type="file" class="form-control" name="Photo" />
+    </div>
+
+    <div class="form-group">
+        <button type="submit">პოსტის დამატება</button>
+    </div>
+    <div class="form-group" style="font-size: 18px; color: red;">
+        @ViewBag.Error
+    </div>
+   
+</form>  
+
+@*<script type="text/javascript">
+    $(function () {
+        $("#Category").on("change", function {
+            $("Category").val($(this).text());
+        });
+    });
+</script>*@
+
+@*@Html.DropDownListFor(m => m.SelectedVendor, Model.Vendor, "Select Manufacurer")
+@Html.HiddenFor(m => m.SelectedvendorText)*@
+
+

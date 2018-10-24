@@ -1,0 +1,32 @@
+﻿
+@{
+    Layout = null;
+}
+
+<style>
+    /* Always set the map height explicitly to define the size of the div
+      * element that contains the map. */
+    #map {
+        height: 400px;
+        width:900px;
+    }
+</style>
+
+<div class="row">
+    <div id="map"></div>
+    <script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: { lat: 41.716729, lng: 44.784198},
+          zoom: 17
+          });
+        var marker = new google.maps.Marker({
+            position: { lat: 41.716729, lng: 44.784198 },
+            map: map
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYc1OSyTOIcSb7XUKqpDmwy64j0LmxrSo&callback=initMap"
+            async defer></script>
+</div>

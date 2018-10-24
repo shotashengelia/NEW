@@ -1,0 +1,42 @@
+﻿
+@{
+    Layout = null;
+}
+<script src="~/Content/metra/HTML/vendor/jquery.min.js"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<link href="~/Content/Main.css" rel="stylesheet" />
+<link href="~/Content/metra/HTML/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" />
+<link href="~/Content/metra/HTML/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<div id="myDIV">
+    <ul>
+        <li><a class="bt active" href="/Projects/Index">პროექტების დამატება</a></li>
+        <li><a class="bt" href="/Projects/Index">პროექტის მართვა</a></li>
+        <li><a class="bt" href="/PostManage/AddNewPost">ბლოგის დამატება</a></li>
+        <li><a class="bt" href="/AdminPanel/AdminShowBlogs">ბლოგის მართვა</a></li>
+        <li><a class="bt" href="/News/AddNews">სიახლის დამატება</a></li>
+        <li><a class="bt" href="/News/AdminShowNews">სიახლის მართვა</a></li>
+        <li style="float:right"><a class="bt" href="#about">About</a></li>
+        <li><a class="bt" href="#">სლაიდერის მართვა</a></li>
+        
+    </ul>
+    <div class="container">
+        @RenderBody()
+    </div>
+</div>
+<script>
+    // Add active class to the current button (highlight it)
+    var header = document.getElementById("myDIV");
+    var btns = header.getElementsByClassName("bt");
+    for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function () {
+            var current = document.getElementsByClassName("active");
+            current[0].className = current[0].className.replace(" active", "");
+            this.className += " active";
+        });
+    }
+
+</script>
+
+
+

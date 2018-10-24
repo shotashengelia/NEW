@@ -1,0 +1,202 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@Page.Title</title>
+    @RenderSection("head", required: false)
+    <meta charset="utf-8" />
+    <title>Metra Development</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <!-- GLOBAL MANDATORY STYLES -->
+    <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
+    <link href=@Url.Content("/Content/metra/HTML/vendor/simple-line-icons/simple-line-icons.min.css") rel="stylesheet" type="text/css" />
+    <link href=@Url.Content("/Content/metra/HTML/vendor/bootstrap/css/bootstrap.min.css") rel="stylesheet" type="text/css" />
+
+    <!-- PAGE LEVEL PLUGIN STYLES -->
+    <link href=@Url.Content("/Content/metra/HTML/css/animate.css") rel="stylesheet">
+    <link href=@Url.Content("/Content/metra/HTML/vendor/swiper/css/swiper.min.css") rel="stylesheet" type="text/css" />
+
+    <!-- THEME STYLES -->
+    <link href=@Url.Content("/Content/metra/HTML/css/layout.min.css") rel="stylesheet" type="text/css" />
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="favicon.ico" />
+</head>
+<body>
+    <header class="header navbar-fixed-top">
+        <!-- Navbar -->
+        <nav class="navbar" role="navigation">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="menu-container">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="toggle-icon"></span>
+                    </button>
+
+                    <!-- Logo -->
+                    <div class="logo">
+                        <a class="logo-wrap" href="/Home/Index">
+                            <img class="logo-img logo-img-main" src="/Content/metra/HTML/img/logo.png" alt="Asentus Logo">
+                            <img class="logo-img logo-img-active" src="/Content/metra/HTML/img/logo.png" alt="Asentus Logo">
+                        </a>
+                    </div>
+                    <!-- End Logo -->
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse nav-collapse">
+                    <div class="menu-container">
+                        <ul class="navbar-nav navbar-nav-right">
+                            <li class="nav-item"><a class="nav-item-child nav-item-hover active" href="/Home/Index">@Metra_Development.Resources.index.NavMain</a></li>
+                            <li class="nav-item"><a class="nav-item-child nav-item-hover" href=#>@Metra_Development.Resources.index.NavProject</a></li>
+                            <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/Home/AboutUs">@Metra_Development.Resources.index.NavAboutUs</a></li>
+                            <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/News/Index">@Metra_Development.Resources.index.NavNews</a></li>
+                            <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/Blog/Index">@Metra_Development.Resources.index.NavBlog</a></li>
+                            <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/Home/Contact">@Metra_Development.Resources.index.NavContact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- End Navbar Collapse -->
+                <div class="lang">
+                    @if (@ViewBag.language == "en-us" || @ViewBag.language == "en-US")
+                    {
+                        var link = @Request.Url.PathAndQuery.ToString().Replace("en-US","ka-GE");
+
+                        <a href="@link"><span>Ge</span></a>
+                        <a href="#" id="eng" class="active"><span>EN</span></a>
+                    }
+                    else
+                    {
+                        var link = @Request.Url.PathAndQuery.ToString();
+
+                        if (link.Contains("ka-Ge") || link.Contains("ka-ge"))  link = link.Replace("ka-GE", "en-US"); 
+                        else  link = link.ToString() + "en-US"; 
+
+                        <a href="#" class="active"><span>Ge</span></a>
+                        <a href="@link" id="eng"><span>EN</span></a>
+                    }
+                </div>
+            </div>
+        </nav>
+        <!-- Navbar -->
+    </header>
+    <!--========== END HEADER ==========-->
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <div class="container">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+            </ol>
+        </div>
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <img class="img-responsive" src="/Content/metra/HTML/img/1920x1080/01.jpg" alt="Slider Image">
+                <div class="container">
+                    <div class="carousel-centered">
+                        <div class="margin-b-40">
+                            <h2 class="carousel-title">@Metra_Development.Resources.index.SlaiderName</h2>
+                            <p>@Metra_Development.Resources.index.SlaiderWord</p>
+                        </div>
+                        <a href="#" class="btn-theme btn-theme-sm btn-white-brd text-uppercase">Explore</a>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img class="img-responsive" src="/Content/metra/HTML/img/1920x1080/2.jpg" alt="Slider Image">
+                <div class="container">
+                    <div class="carousel-centered">
+                        <div class="margin-b-40">
+                            <h2 class="carousel-title">@Metra_Development.Resources.index.SlaiderName</h2>
+                            <p>@Metra_Development.Resources.index.SlaiderWord</p>
+                        </div>
+                        <a href="#" class="btn-theme btn-theme-sm btn-white-brd text-uppercase">Explore</a>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img class="img-responsive" src="/Content/metra/HTML/img/1920x1080/03.jpg" alt="Slider Image">
+                <div class="container">
+                    <div class="carousel-centered">
+                        <div class="margin-b-40">
+                            <h2 class="carousel-title">@Metra_Development.Resources.index.SlaiderName</h2>
+                            <p>@Metra_Development.Resources.index.SlaiderWord</p>
+                        </div>
+                        <a href="#" class="btn-theme btn-theme-sm btn-white-brd text-uppercase">Explore</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        @RenderBody()
+        <hr />
+    </div>
+    <!--========== FOOTER ==========-->
+    <footer class="footer">
+        <!-- Copyright -->
+        <div class="content container">
+            
+                <!--// google map  -->
+                
+                    <div id="map"></div>
+                    <script>
+                        var map;
+                        function initMap() {
+                            map = new google.maps.Map(document.getElementById('map'), {
+                                center: { lat: 41.716729, lng: 44.784198 },
+                                zoom: 17
+                            });
+                            var marker = new google.maps.Marker({
+                                position: { lat: 41.716729, lng: 44.784198 },
+                                map: map
+                            });
+                        }
+                    </script>
+                    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYc1OSyTOIcSb7XUKqpDmwy64j0LmxrSo&callback=initMap"
+                            async defer></script>
+                
+                <!--// google map  end -->
+                
+                <div class="col-xs-6 text-right" style="margin-top:18px;">
+                    <p class="margin-b-0"> Metra Development Powered by: <a class="color-base fweight-700" href="#">შოთა შენგელია</a></p>
+                </div>
+           
+            <!--// end row -->
+        </div>
+        <!-- End Copyright -->
+    </footer>
+    <!--========== END FOOTER ==========-->
+    <!-- Back To Top -->
+    <a href="javascript:void(0);" class="js-back-to-top back-to-top">Top</a>
+
+    <!-- JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+    <!-- CORE PLUGINS -->
+    <script src=@Url.Content("/Content/metra/HTML/vendor/jquery.min.js") type="text/javascript"></script>
+    <script src=@Url.Content("/Content/metra/HTML/vendor/jquery-migrate.min.js") type="text/javascript"></script>
+    <script src=@Url.Content("/Content/metra/HTML/vendor/bootstrap/js/bootstrap.min.js") type="text/javascript"></script>
+
+    <!-- PAGE LEVEL PLUGINS -->
+    <script src=@Url.Content("/Content/metra/HTML/vendor/jquery.easing.js") type="text/javascript"></script>
+    <script src=@Url.Content("/Content/metra/HTML/vendor/jquery.back-to-top.js") type="text/javascript"></script>
+    <script src=@Url.Content("/Content/metra/HTML/vendor/jquery.smooth-scroll.js") type="text/javascript"></script>
+    <script src=@Url.Content("/Content/metra/HTML/vendor/jquery.wow.min.js") type="text/javascript"></script>
+    <script src=@Url.Content("/Content/metra/HTML/vendor/swiper/js/swiper.jquery.min.js") type="text/javascript"></script>
+    <script src=@Url.Content("/Content/metra/HTML/vendor/masonry/jquery.masonry.pkgd.min.js") type="text/javascript"></script>
+    <script src=@Url.Content("/Content/metra/HTML/vendor/masonry/imagesloaded.pkgd.min.js") type="text/javascript"></script>
+
+    <!-- PAGE LEVEL SCRIPTS -->
+    <script src=@Url.Content("/Content/metra/HTML/js/layout.min.js") type="text/javascript"></script>
+    <script src=@Url.Content("/Content/metra/HTML/js/components/wow.min.js") type="text/javascript"></script>
+    <script src=@Url.Content("/Content/metra/HTML/js/components/swiper.min.js") type="text/javascript"></script>
+    <script src=@Url.Content("/Content/metra/HTML/js/components/masonry.min.js") type="text/javascript"></script>
+
+</body>
+</html>
